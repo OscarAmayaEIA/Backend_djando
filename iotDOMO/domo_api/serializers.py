@@ -6,7 +6,7 @@ class Locations_serializer(serializers.ModelSerializer):
     user_id=serializers.IntegerField()
     class Meta:
         model=Locations
-        fields=["name_locations","user_id"]
+        fields=["id","name_locations","user_id"]
 
 class Devices_serializer(serializers.ModelSerializer):
     unit=serializers.CharField(max_length=255)
@@ -14,7 +14,7 @@ class Devices_serializer(serializers.ModelSerializer):
     location_id=serializers.IntegerField()
     class Meta:
         model=Devices
-        fields=["unit","name_devices","location_id"]
+        fields=["id","unit","name_devices","location_id"]
 class Dots_serializer(serializers.ModelSerializer):
     value=serializers.FloatField()
     device_id=serializers.IntegerField()
