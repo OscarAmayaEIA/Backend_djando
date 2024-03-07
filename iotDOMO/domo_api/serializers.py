@@ -20,4 +20,4 @@ class Dots_serializer(serializers.ModelSerializer):
     device_id=serializers.IntegerField()
     class Meta:
         model=Dots
-        fields=["value","device_id"]
+        fields=["value","device_id","date_time"]
