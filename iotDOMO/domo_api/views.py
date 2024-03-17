@@ -15,7 +15,7 @@ class Locations_method(APIView):
         return Response(content,status=status.HTTP_200_OK)
     def post(self,request):
         name_locations=request.data.get("name_locations")
-        user=request.data.get("user")
+        user=1
         Locations.objects.create(name_locations=name_locations,user_id=user)
         return Response(status=status.HTTP_200_OK) 
     def put(self,request,codigo):
@@ -67,4 +67,10 @@ class Dots_method(APIView):
     def delete(self,request,codigo):
         dots_local=Dots.objects.get(id=codigo)
         dots_local.delete()
+        return Response(status=status.HTTP_200_OK)
+class Dots_mqtt(APIView):
+    def post(self,request):
+        value=request.data.get("value")
+        device_id=request.data.get("topic")
+        Dots.objects.create(value=value,device_id=device_id)
         return Response(status=status.HTTP_200_OK)

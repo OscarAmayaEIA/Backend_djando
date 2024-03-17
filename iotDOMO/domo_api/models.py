@@ -10,6 +10,7 @@ class Devices(models.Model):
     unit=models.CharField(max_length=255)#Undad de medida
     name_devices=models.CharField(max_length=255)
     location=models.ForeignKey(Locations,on_delete=models.CASCADE)
+    Serial=models.CharField(max_length=255)
     
 class Dots(models.Model):
     value=models.FloatField()
