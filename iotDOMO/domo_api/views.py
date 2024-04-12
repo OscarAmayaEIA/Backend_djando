@@ -5,6 +5,31 @@ from rest_framework import status
 from .models import *
 from .serializers import *
 # Create your views here.
+class Aplication_users_method(APIView):
+    def get(self,request):
+        users_local=Aplication_users.objects.all()
+        content={}
+        users_list=Apli_users_serializer(users_local,many=True).data
+        content={"users":users_list}
+        return Response(content,status=status.HTTP_200_OK)
+    def post(self,request):
+        Name=request.data.get("Name")
+        contraseña=request.data.get("contraseña")
+        Celular=request.data.get("Celular")
+        Aplication_users.objects.create(Name=Name,contraseña=contraseña,Celular=Celular)
+        return Response(status=status.HTTP_200_OK) 
+    def put(self,request,codigo):
+        users_local=Aplication_users.objects.get(id=codigo)
+        users_local.Name=request.data["Name"]
+        users_local.contraseña=request.data["contraseña"]
+        users_local.Celular=request.data["Celular"]
+        users_local.save()
+        return Response(status=status.HTTP_200_OK)
+    def delete(self,request,codigo):
+        users_local=Aplication_users.objects.get(id=codigo)
+        users_local.delete()
+        return Response(status=status.HTTP_200_OK)
+
 
 class Locations_method(APIView):
     def get(self,request,codigo):
@@ -54,7 +79,7 @@ class Devices_method(APIView):
 
 class Dots_method(APIView):
     def get(self,request,codigo):
-        dots_local=Dots.objects.filter(device_id=codigo)
+        dots_local=Dots.objects.filter(Serial=codigo)
         content={}
         dots_list=Dots_serializer(dots_local,many=True).data
         content={"dots":dots_list}

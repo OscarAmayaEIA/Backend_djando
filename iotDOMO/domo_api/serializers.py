@@ -21,3 +21,10 @@ class Dots_serializer(serializers.ModelSerializer):
     class Meta:
         model=Dots
         fields=["value","device_id","date_time"]
+class Apli_users_serializer(serializers.ModelSerializer):
+    Name=serializers.CharField(max_length=255)
+    contraseña=serializers.CharField(max_length=255)
+    Celular=serializers.CharField(max_length=255)
+    class Meta:
+        model=Aplication_users
+        fields=["id","Name","contraseña","Celular"]
