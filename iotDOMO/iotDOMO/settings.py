@@ -83,8 +83,8 @@ DATABASES = { #
         "ENGINE": "django.db.backends.mysql",#sqlite3",
         "NAME": "Domo_db",#BASE_DIR / "db.sqlite3",
         "USER":"admin",
-        "PASSWORD":"cha19999",
-        "HOST":"prueba1.cv400mqyk791.us-east-1.rds.amazonaws.com",
+        "PASSWORD":"admin",
+        "HOST":"localhost",
         "PORT":"3306"
     }
 }
